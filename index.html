@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASIN → ISBN Lookup</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="page__header">
+      <h1>ASIN → ISBN Lookup</h1>
+      <p class="subtitle">Paste ASINs or ISBNs below, one per line.</p>
+    </header>
+
+    <section class="input-card">
+      <div class="input-card__toolbar">
+        <span class="input-card__label">Input</span>
+        <button id="pasteBtn" class="icon-btn" title="Paste from clipboard" aria-label="Paste from clipboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+        </button>
+      </div>
+      <textarea id="codesInput" class="codes-input" placeholder="1881939138&#10;059035342X&#10;9780134685991" spellcheck="false"></textarea>
+    </section>
+
+    <button id="searchBtn" class="search-btn">Search</button>
+
+    <section id="statusArea" class="status-area" hidden></section>
+
+    <section class="results-card">
+      <div class="results-card__toolbar">
+        <span class="results-card__label">Results</span>
+        <div class="export-buttons">
+          <button id="exportCsvBtn" class="text-btn" hidden>Export CSV</button>
+          <button id="exportXlsxBtn" class="text-btn" hidden>Export Excel (.xlsx)</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table id="resultsTable">
+          <thead>
+            <tr>
+              <th>ASIN</th>
+              <th>Book Name</th>
+              <th>ISBN-10</th>
+              <th>ISBN-13</th>
+            </tr>
+          </thead>
+          <tbody id="resultsBody">
+            <tr class="empty-row">
+              <td colspan="4">No results yet. Paste some codes and press Search.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
